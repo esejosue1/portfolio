@@ -140,14 +140,26 @@
                     <div class="section-inner shadow-sm rounded">
                         <h2 class="heading">Work Experience</h2>
                         <div class="content">
+                            {% for job in experience %}
+                            <hr class="divider" />
                             <div class="item">
-                                <h3 class="title">Student Assistant <span class="place"><a href="#">San Marcos State University</a></span> <span class="year">(2022 - Present)</span></h3>
+                                <h3 
+                                    class="title">{{job.title}}
+                                    <span class="place">{{job.company}} -</span> 
+                                    {% if job.current %}
+                                    <span class="year">({{job.start_date.month}}/{{job.start_date.year}} - Present)</span>
+                                    {% else %}
+                                    <span class="year">({{job.start_date.month}}/{{job.start_date.year}} - {{job.end_date.month}}/{{job.end_date.year}})</span>
+                                    {% endif %}
+                                    
+                                </h3>
+                                <h3 class="title"><span class="place">{{job.address}}</span></h3>
+                                
                                 <p>
-                                    Responsible for grading students' code written in Python, F#, and Prolog and providing feedback based on quality programming.
-Provide possible solution paths for code that contained small bugs, as well as possible ideas of how to approach a coding problem based on assignment difficulty.
-Grade homework assignments every week; always reaching out to professor Y. Jiang whenever an assignment has been graded or for any other grading question I had.
+                                    {{job.description}}
                                 </p>
-                            </div><!--//item-->                        
+                            </div><!--//item-->   
+                            {% endfor %}                     
                         </div><!--//content-->  
                     </div><!--//section-inner-->                 
                 </section><!--//section-->
@@ -184,7 +196,7 @@ Grade homework assignments every week; always reaching out to professor Y. Jiang
                                     <h3 class="level-title">{{skill.title}}<span class="level-label" data-bs-toggle="tooltip" data-bs-placement="left" title="You can use the tooltip to explain more about your skill level..."><i class="fas fa-info-circle"></i>{{skill.level}}</span></h3>
 
                                     <div class="level-bar progress">
-									    <div class="progress-bar level-bar-inner" role="progressbar" style="width: {{skill.bar_level}}%" aria-valuenow="{{skill.bar_level}}"  aria-valuemin="0" aria-valuemax="{{skill.bar_level}}"></div>
+									    <div class="progress-bar level-bar-inner" role="progressbar" style="width:{{skill.bar_level}}%" aria-valuenow="{{skill.bar_level}}"  aria-valuemin="0" aria-valuemax="{{skill.bar_level}}"></div>
 									</div><!--//level-bar-->                               
                                 </div><!--//item-->
                                 {% endif %}

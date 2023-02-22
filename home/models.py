@@ -36,3 +36,16 @@ class Knowledge(models.Model):
 
     def __str__(self):
         return self.title
+
+class Experience(models.Model):
+    
+    title=models.CharField(max_length=50)
+    company=models.CharField(max_length=50)
+    current=models.BooleanField(default=False)
+    start_date = models.DateField(null=True, blank=True)
+    end_date = models.DateField(null=True, blank=True)
+    address=models.CharField(max_length=50)
+    description=models.TextField(max_length=500)
+
+    def __str__(self):
+        return self.title
